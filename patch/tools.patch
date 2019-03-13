@@ -1,0 +1,24 @@
+diff --git a/msi/Makefile b/msi/Makefile
+index 398c861..eacce3f 100644
+--- a/msi/Makefile
++++ b/msi/Makefile
+@@ -31,7 +31,7 @@ sources = WixUI_InstallDir_NoLicense.wxs MyInstallDirDlg.wxs \
+ OBJECTS = ${sources:%.wxs=%.wixobj} 
+ 
+ fragment.wxs: 
+-	Paraffin.exe -dir bin -g -alias bin -custom bin fragment.wxs
++	Paraffin.exe -dir bin -alias bin -gn group_bin fragment.wxs
+ 
+ %.wixobj : %.wxs
+ 	$(CC) $(CFLAGS) $< -o $@
+diff --git a/msi/custom/Makefile b/msi/custom/Makefile
+index f1b3bf2..56b386a 100644
+--- a/msi/custom/Makefile
++++ b/msi/custom/Makefile
+@@ -1,5 +1,5 @@
+ CC64 = x86_64-w64-mingw32-gcc.exe
+-DLLWRAP64 = x86_64-w64-mingw32-dllwrap.exe
++DLLWRAP64 = /mingw64/bin/dllwrap.exe
+ 
+ CC32 = gcc.exe
+ DLLWRAP32 = dllwrap.exe
